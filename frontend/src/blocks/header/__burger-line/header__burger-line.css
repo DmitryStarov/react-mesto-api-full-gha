@@ -1,0 +1,8 @@
+.header__burger-line {
+  display: block;
+  height: 3px;
+  width: 24px;
+  background-color: #ffffff;
+  transition: transform .25s .25s;
+  margin: 0 auto 6px;
+}

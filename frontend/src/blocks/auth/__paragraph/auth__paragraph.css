@@ -1,0 +1,15 @@
+.auth__paragraph {
+  padding: 15px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 425px) {
+  .auth__paragraph {
+    padding: 20px;
+  }
+}

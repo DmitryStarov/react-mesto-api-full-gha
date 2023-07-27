@@ -1,0 +1,14 @@
+.header__signout-button {
+  background-color: #000000;
+  color: #a9a9a9;
+  font-weight: 400;
+  border: none;
+  padding: 0;
+  transition: opacity 0.25s;
+  cursor: pointer;
+}
+
+.header__signout-button:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}

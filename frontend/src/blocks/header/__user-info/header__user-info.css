@@ -1,0 +1,21 @@
+.header__user-info {
+  display: flex;
+  gap: 24px;
+  font-size: 18px;
+  line-height: 1.22;
+  background-color: #000000;
+}
+
+@media screen and (max-width: 767px) {
+  .header__user-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 142px;
+    gap: 18px;
+    margin-right: 26px;
+    position: absolute;
+    top: -142px;
+  }
+}

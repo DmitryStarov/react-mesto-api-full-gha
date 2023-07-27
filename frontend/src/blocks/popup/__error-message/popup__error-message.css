@@ -1,0 +1,13 @@
+.popup__error-message {
+
+  min-height: 24px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: #FF0000;
+  text-align: left;
+  max-width: 100%;
+  opacity: 1;
+}
+
+

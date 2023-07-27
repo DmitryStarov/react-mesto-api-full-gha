@@ -1,0 +1,7 @@
+.cards__description {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  max-width: 246px;
+  padding: 25px 20px 25px 21px;
+}

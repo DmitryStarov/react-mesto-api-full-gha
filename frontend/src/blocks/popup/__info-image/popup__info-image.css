@@ -1,0 +1,15 @@
+.popup__info-image {
+    width: 120px;
+    aspect-ratio: 1/1;
+    align-self: center;
+    margin-top: 26px;
+    margin-bottom: 32px;
+    object-fit: cover;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .popup__info-image {
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+  }
