@@ -20,7 +20,7 @@ const ConflictRequestError = require('../errors/ConflictRequestError');
 
 module.exports.getUsers = (req, res) => {
   User.find({})
-    .then((users) => res.send({ users }))
+    .then((users) => res.send(users))
     .catch(() => res.status(INTERNAL_SERVER_STATUS).send({ message: SERVER_ERROR_MESSAGE }));
 };
 module.exports.getUserInfo = (req, res, next) => {
@@ -30,7 +30,7 @@ module.exports.getUserInfo = (req, res, next) => {
       if (!user) {
         throw new NotFound(USER_NOT_FOUND_MESSAGE);
       }
-      res.send({ user });
+      res.send(user);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
@@ -82,7 +82,7 @@ const updateUserData = (req, res, next, data, badRequestMessage) => {
       if (!user) {
         throw new BadRequest(badRequestMessage);
       }
-      res.send({ user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -110,7 +110,7 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (!user) {
         BadRequest(USER_NOT_FOUND_MESSAGE);
       }
-      res.send({ user });
+      res.send(user);
     })
     .catch(next);
 };

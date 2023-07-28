@@ -16,7 +16,8 @@ const Forbidden = require('../errors/Forbidden');
 module.exports.getCards = (req, res, next) => {
   Card
     .find({})
-    .then((cards) => res.send({ cards }))
+    .populate(['owner', 'likes'])
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 module.exports.postCard = (req, res, next) => {
@@ -24,7 +25,7 @@ module.exports.postCard = (req, res, next) => {
   Card
     .create({ name, link, owner: req.user._id })
     .then((card) => {
-      res.status(CREATED_STATUS).send({ card });
+      res.status(CREATED_STATUS).send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -48,7 +49,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
       Card.deleteOne(card)
         .then(() => {
-          res.send({ card });
+          res.send(card);
         })
         .catch(next);
     })
@@ -72,7 +73,7 @@ const updateLike = (req, res, next, data) => {
       if (!card) {
         throw new NotFound(INVALID_ID_CARD_MESSAGE);
       }
-      res.send({ card });
+      res.send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {

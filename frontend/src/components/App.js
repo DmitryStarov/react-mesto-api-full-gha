@@ -33,12 +33,13 @@ export default function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+    console.log(isLoggedIn);
     if (jwt) {
       auth
         .checkToken(jwt)
         .then((data) => {
           if (data) {
-            setEmailUser(data.data.email);
+            setEmailUser(data.email);
             setIsLoggedIn(true);
             navigate("/", { replace: true });
           }
@@ -47,7 +48,7 @@ export default function App() {
           console.log(error);
         });
     }
-  }, [emailUser, navigate]);
+  }, [navigate]);
 
   useEffect(() => {
     if (isLoggedIn) {
