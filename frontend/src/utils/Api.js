@@ -18,6 +18,7 @@ class Api {
   //получение данных пользователя
 
   getUserInfo() {
+    this._headers["Authorization"] = `Bearer ${localStorage.getItem('jwt')}`;
     return this._request("/users/me", {
       headers: this._headers,
     });
@@ -48,6 +49,7 @@ class Api {
 
   //получение карточек с сервера
   getInitialCards() {
+    this._headers["Authorization"] = `Bearer ${localStorage.getItem('jwt')}`;
     return this._request("/cards", {
       method: "GET",
       headers: this._headers,

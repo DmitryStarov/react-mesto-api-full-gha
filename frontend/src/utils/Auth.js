@@ -32,6 +32,12 @@ class Auth {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ email, password }),
+    })
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        return data;
+    }
     });
   }
 

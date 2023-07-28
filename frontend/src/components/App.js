@@ -33,7 +33,6 @@ export default function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log(isLoggedIn);
     if (jwt) {
       auth
         .checkToken(jwt)
