@@ -35,6 +35,12 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
+//краш-тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
 app.use('/signin', validateLogin, login);
 app.use('/signup', validatePostUser, postUser);
 app.use(auth);
