@@ -28,7 +28,7 @@ const limiter = rateLimit({
 
 const app = express();
 const { URL}  = process.env;
-const { PORT = 4000 } = process.env;
+const { PORT = 3000 } = process.env;
 mongoose.connect(URL);
 app.use(cors(corsOptions));
 app.use(limiter);
