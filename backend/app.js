@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { errors } = require('celebrate');
 const cors = require('cors')
+const rateLimit = require('express-rate-limit');
 const { routeUsers, routeCards } = require('./routes/index');
 const { postUser, login } = require('./controllers/users');
 const { NOT_FOUND_STATUS, INTERNAL_SERVER_STATUS, SERVER_ERROR_MESSAGE } = require('./utils/constants');
@@ -19,17 +20,23 @@ const corsOptions = {
   credentials: true,
 };
 
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 минута
+  max: 100,
+  message: 'Превышено количество запросов на сервер. Пожалуйста, повторите позже',
+});
+
 const app = express();
 const { URL}  = process.env;
 const { PORT = 4000 } = process.env;
 mongoose.connect(URL);
 app.use(cors(corsOptions));
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 app.use('/signin', validateLogin, login);
 app.use('/signup', validatePostUser, postUser);
-
 app.use(auth);
 app.use('/users', routeUsers);
 app.use('/cards', routeCards);
