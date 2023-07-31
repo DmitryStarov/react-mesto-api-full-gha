@@ -21,7 +21,7 @@ const INVALID_URL = 'Неверно указан URL';
 const CONFLICT_EMAIL_MESSAGE = 'Этот email уже зарегестрирован';
 const AUTH_ERR_MESSAGE = 'Необходимо авторизироваться';
 const FORBIDDEN_DELETE_CARD_MESSAGE = 'Запрещено удалять чужую карточку';
-const SECRET_KEY = 'some-secret-key';
+const { SECRET_KEY } = process.env;
 const REG_URL = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/;
 const REG_ID = /^[0-9a-fA-F]{24}$/;
 module.exports = {

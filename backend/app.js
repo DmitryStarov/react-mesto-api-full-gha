@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const express = require('express');
 const mongoose = require('mongoose');
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -19,7 +20,7 @@ const corsOptions = {
 };
 
 const app = express();
-const URL = 'mongodb://127.0.0.1:27017/mestodb';
+const { URL}  = process.env;
 const { PORT = 4000 } = process.env;
 mongoose.connect(URL);
 app.use(cors(corsOptions));
