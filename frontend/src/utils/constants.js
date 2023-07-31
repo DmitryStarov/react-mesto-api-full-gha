@@ -6,6 +6,6 @@ export const connectionSettings = {
   },
 };
 export const authSettings = {
-  baseUrl: "https://api.starov.nomoreparties.co",
+  baseUrl: "http://api.starov.nomoreparties.co",
   headers: { "Content-Type": "application/json" },
 };
