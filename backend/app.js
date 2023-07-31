@@ -1,4 +1,4 @@
-require('dotenv').config(); 
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -12,7 +12,7 @@ const { validatePostUser, validateLogin } = require('./middlewares/validation');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const allowedCors = ['http://starov.nomoredomains.xyz','http://localhost:3000'];
+const allowedCors = ['https://starov.nomoredomains.xyz','http://localhost:3000'];
 
 const corsOptions = {
   origin: allowedCors,
@@ -40,7 +40,7 @@ app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); 
+});
 app.use('/signin', validateLogin, login);
 app.use('/signup', validatePostUser, postUser);
 app.use(auth);
