@@ -12,10 +12,8 @@ const { validatePostUser, validateLogin } = require('./middlewares/validation');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const allowedCors = ['https://starov.nomoredomains.xyz','http://localhost:3000'];
-
 const corsOptions = {
-  origin: allowedCors,
+  origin: ['https://starov.nomoredomains.xyz','http://localhost:3000'],
   optionsSuccessStatus: 200,
   credentials: true,
 };
