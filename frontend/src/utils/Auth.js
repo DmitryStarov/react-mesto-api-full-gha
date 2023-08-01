@@ -14,7 +14,7 @@ class Auth {
   }
 
   _request(url, options) {
-    return fetch(`https://api.starov.nomoreparties.co${url}`, options).then(this._checkResponse);
+    return fetch(`${this._baseUrl}${url}`, options).then(this._checkResponse);
   }
 
   //регистраци
