@@ -21,7 +21,7 @@ const corsOptions = {
 };
 
 const limiter = rateLimit({
-  windowMs: 60 * 1000, // 1 минута
+  windowMs: 60 * 1000,
   max: 100,
   message: 'Превышено количество запросов на сервер. Пожалуйста, повторите позже',
 });
