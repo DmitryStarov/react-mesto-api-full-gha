@@ -26,7 +26,7 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
-app.use(cors);
+app.use(cors());
 //краш-тест
 app.get('/crash-test', () => {
   setTimeout(() => {
