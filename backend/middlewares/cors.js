@@ -1,5 +1,6 @@
 const allowedCors = [
   'https://starov.nomoredomains.xyz',
+  'https://starov.nomoredomains.xyz/sign-in',
   'http://starov.nomoredomains.xyz',
   'https://api.starov.nomoreparties.co',
   'http://api.starov.nomoreparties.co',
