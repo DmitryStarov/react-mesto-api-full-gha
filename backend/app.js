@@ -25,7 +25,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
   credentials: true,
 };
-app.use(cors(corsOptions));
+
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 100,
@@ -36,8 +36,7 @@ const app = express();
 const { URL}  = process.env;
 const { PORT = 3000 } = process.env;
 mongoose.connect(URL);
-app.use(cors);
-app.use(limiter);
+app.use(cors(corsOptions));app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
