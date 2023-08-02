@@ -1,5 +1,6 @@
 const allowedCors = [
   'https://starov.nomoredomains.xyz',
+  'https://api.starov.nomoreparties.co',
   'https://localhost:3000'
 ];
 
