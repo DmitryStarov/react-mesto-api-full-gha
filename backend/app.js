@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { errors } = require('celebrate');
-const cors = require('./middlewares/cors')
+const cors = require('cors')
 const rateLimit = require('express-rate-limit');
 const { routeUsers, routeCards } = require('./routes/index');
 const { postUser, login } = require('./controllers/users');
@@ -11,7 +11,21 @@ const { NOT_FOUND_STATUS, INTERNAL_SERVER_STATUS, SERVER_ERROR_MESSAGE } = requi
 const { validatePostUser, validateLogin } = require('./middlewares/validation');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
+const allowedCors = [
+  'https://starov.nomoredomains.xyz',
+  'https://starov.nomoredomains.xyz/sign-in',
+  'http://starov.nomoredomains.xyz',
+  'https://api.starov.nomoreparties.co',
+  'http://api.starov.nomoreparties.co',
+  'https://localhost:3000',
+  'http://localhost:3000'
+];
+const corsOptions = {
+  origin: allowedCors,
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+app.use(cors(corsOptions));
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 100,
