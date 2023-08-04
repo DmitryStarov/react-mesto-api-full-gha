@@ -24,7 +24,7 @@ module.exports.postCard = (req, res, next) => {
   const { name, link } = req.body;
   Card
     .create({ name, link, owner: req.user })
-    .populate('owner')
+    .populate(['owner'])
     .then((card) => {
       res.status(CREATED_STATUS).send(card);
     })
