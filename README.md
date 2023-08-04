@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 130.193.52.49
+IP-адрес 84.252.138.237
 
 [Frontend https://starov.nomoredomains.xyz](https://starov.nomoredomains.xyz)
 
