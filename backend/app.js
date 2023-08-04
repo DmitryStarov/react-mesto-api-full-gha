@@ -33,7 +33,8 @@ const limiter = rateLimit({
 });
 
 const app = express();
-const { URL}  = process.env;
+//я прохождения теста gh, на продакте из env
+const  URL = 'mongodb://127.0.0.1:27017/mestodb';
 const { PORT = 3000 } = process.env;
 mongoose.connect(URL);
 app.use(cors(corsOptions));app.use(limiter);
