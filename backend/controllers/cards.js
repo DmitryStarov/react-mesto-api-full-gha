@@ -16,7 +16,6 @@ const Forbidden = require('../errors/Forbidden');
 module.exports.getCards = (req, res, next) => {
   Card
     .find({})
-    .populate(['owner', 'likes'])
     .then((cards) => res.send(cards.reverse()))
     .catch(next);
 };
