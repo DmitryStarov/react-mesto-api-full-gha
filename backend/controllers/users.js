@@ -4,8 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const {
-  INTERNAL_SERVER_STATUS,
-  SERVER_ERROR_MESSAGE,
   INVALID_ADD_USER_MESSAGE,
   USER_NOT_FOUND_MESSAGE,
   INVALID_UPDATE_USER_MESSAGE,
@@ -18,10 +16,10 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const ConflictRequestError = require('../errors/ConflictRequestError');
 
-module.exports.getUsers = (req, res) => {
+module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.send(users))
-    .catch(() => res.status(INTERNAL_SERVER_STATUS).send({ message: SERVER_ERROR_MESSAGE }));
+    .catch(next);
 };
 module.exports.getUserInfo = (req, res, next) => {
   const { userId } = req.params;
@@ -106,7 +104,6 @@ module.exports.login = (req, res, next) => {
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
-      console.log(req.user._id);
       if (!user) {
         BadRequest(USER_NOT_FOUND_MESSAGE);
       }
