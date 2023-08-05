@@ -73,12 +73,12 @@ module.exports.postUser = (req, res, next) => {
       return next(err);
     });
 };
-const updateUserData = (req, res, next, data, badRequestMessage) => {
+const updateUserData = (req, res, next, data, notFoundMessage) => {
   User
     .findByIdAndUpdate(req.user._id, data, { new: true, runValidators: true, upsert: false })
     .then((user) => {
       if (!user) {
-        throw new BadRequest(badRequestMessage);
+        throw new NotFound(notFoundMessage);
       }
       res.send(user);
     })
@@ -105,7 +105,7 @@ module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        BadRequest(USER_NOT_FOUND_MESSAGE);
+        throw new NotFound(USER_NOT_FOUND_MESSAGE);
       }
       res.send(user);
     })
