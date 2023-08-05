@@ -24,12 +24,12 @@ module.exports.postCard = (req, res, next) => {
   const { name, link } = req.body;
   Card
     .create({ name, link, owner: req.user._id })
-     .then((card) => {
+    .then((card) => {
       card
-      .populate(['owner', 'likes'])
-      .then(() => res.status(CREATED_STATUS).send(card))
-      .catch(next);
-      })
+        .populate(['owner', 'likes'])
+        .then(() => res.status(CREATED_STATUS).send(card))
+        .catch(next);
+    })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequest(INVALID_ADD_CARD_MESSAGE));
@@ -49,7 +49,7 @@ module.exports.deleteCard = (req, res, next) => {
       if (!card.owner.equals(req.user._id)) {
         return next(new Forbidden(FORBIDDEN_DELETE_CARD_MESSAGE));
       }
-      Card.deleteOne(card)
+      return Card.deleteOne(card)
         .then(() => {
           res.send(card);
         })
