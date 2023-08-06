@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
-const validator = require('validator');
 const { REG_URL, INVALID_URL } = require('../utils/constants');
 
 const { Schema } = mongoose;
